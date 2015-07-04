@@ -28,6 +28,7 @@ extern "C" {
   typedef uint16_t char16_t;
 #endif
   // otherwise char16_t is a keyword with the right semantics
+  typedef uint16_t char16_t;
 
 extern char * strndup16to8 (const char16_t* s, size_t n);
 extern size_t strnlen16to8 (const char16_t* s, size_t n);
