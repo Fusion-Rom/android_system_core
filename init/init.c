@@ -519,7 +519,14 @@ void handle_control_message(const char *msg, const char *arg)
     } else if (!strcmp(msg,"stop")) {
         msg_stop(arg);
     } else if (!strcmp(msg,"restart")) {
-        msg_restart(arg);
+        if( !strcmp(arg,"consolemode")) {
+            msg_stop("zygote");
+            msg_stop("surfaceflinger");
+            msg_start("surfaceflinger");
+            msg_start("zygote");
+        } else {
+            msg_restart(arg);
+        }
     } else {
         ERROR("unknown control msg '%s'\n", msg);
     }
